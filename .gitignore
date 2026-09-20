@@ -1,0 +1,19 @@
+cat << 'EOF' > .gitignore
+# Target/Compiled folders
+target/
+bin/
+*.class
+
+# Eclipse / Spring Tool Suite (STS) specific files
+.settings/
+.project
+.classpath
+.factorypath
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Log files
+*.log
+EOF
