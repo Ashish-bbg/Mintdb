@@ -42,6 +42,13 @@ public class Row {
 		
 	}
 	
+	public String serialize() {
+		return values.stream()
+				.map(Object::toString)
+				.reduce((a,b) -> a + "|" + b)
+				.orElse("");
+	}
+	
 }
 
 

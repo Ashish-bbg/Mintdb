@@ -36,6 +36,7 @@ public class Main {
 		Table users = new Table("users", schema);
 		
 		users.insert(1, "Ashish", 23);
+		users.insert(2, "Rahul", 24);
 		
 		for(Row row: users.getRows()) {
 			System.out.println(row.getValues());

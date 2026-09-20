@@ -1,5 +1,6 @@
 package com.ashish.mintdb.storage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,14 +9,16 @@ public class Table {
 	private String name;
 	private TableSchema schema;
 	private List<Row> rows;
+	private Storage storage;
 	
 	public Table(String name, TableSchema schema) {
 		this.name = name;
 		this.schema = schema;
 		this.rows = new ArrayList<>();
+		this.storage = new Storage();
 	}
 	
-	public void insert(Object... values) {
+	public void insert(Object... values) throws IOException {
 		
 		Row row = new Row();
 		
@@ -28,6 +31,8 @@ public class Table {
 		}
 		
 		rows.add(row);
+		
+		storage.append(row.serialize());
 		
 	}
 	
