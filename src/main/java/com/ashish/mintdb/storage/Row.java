@@ -23,4 +23,31 @@ public class Row {
 		return values;
 	}
 	
+	public boolean isValid(TableSchema schema) {
+		
+		if(values.size() != schema.getColumns().size()) {
+			return false;
+		}
+		
+		for(int i=0; i<values.size(); i++) {
+			Object value = values.get(i);
+			DataType expectedType = schema.getColumns().get(i).getType();
+			
+			if(!expectedType.isValid(value)) {
+				return false;
+			}
+		}
+		
+		return true;
+		
+	}
+	
 }
+
+
+
+
+
+
+
+

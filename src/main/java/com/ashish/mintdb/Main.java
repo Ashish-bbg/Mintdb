@@ -4,6 +4,7 @@ import com.ashish.mintdb.storage.Column;
 import com.ashish.mintdb.storage.DataType;
 import com.ashish.mintdb.storage.Row;
 import com.ashish.mintdb.storage.Storage;
+import com.ashish.mintdb.storage.Table;
 import com.ashish.mintdb.storage.TableSchema;
 
 public class Main {
@@ -26,27 +27,19 @@ public class Main {
 //		System.out.println(row.getName());
 //		System.out.println(row.getAge());
 		
-//		TableSchema schema = new TableSchema();
-//		
-//		schema.addColumn(new Column("id", DataType.INT));
-//		schema.addColumn(new Column("name", DataType.TEXT));
-//		schema.addColumn(new Column("age", DataType.INT));
-//		
-//		for(Column column : schema.getColumns()) {
-//			System.out.println(
-//					column.getName() + " -> " + column.getType()
-//					);
-//		}
+		TableSchema schema = new TableSchema();
 		
-		Row row = new Row();
+		schema.addColumn(new Column("id", DataType.INT));
+		schema.addColumn(new Column("name", DataType.TEXT));
+		schema.addColumn(new Column("age", DataType.INT));
+
+		Table users = new Table("users", schema);
 		
-		row.addValue(1);
-		row.addValue("Ashish");
-		row.addValue("25");
+		users.insert(1, "Ashish", 23);
 		
-		System.out.println(row.getValue(0));
-		System.out.println(row.getValue(1));
-		System.out.println(row.getValue(2));
+		for(Row row: users.getRows()) {
+			System.out.println(row.getValues());
+		}
 	}
 
 }
