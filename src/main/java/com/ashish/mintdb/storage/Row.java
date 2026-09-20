@@ -1,28 +1,26 @@
 package com.ashish.mintdb.storage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Row {
 
-	private int id;
-	private String name;
-	private int age;
+	private List<Object> values;
 	
-	public Row(int id, String name, int age) {
-		this.id = id;
-		this.name = name;
-		this.age = age;
+	public Row() {
+		values = new ArrayList<>();
 	}
 	
-	public int getId() {
-		return id;
+	public void addValue(Object value) {
+		values.add(value);
 	}
 	
-	public String getName() {
-		return name;
+	public Object getValue(int index) {
+		return values.get(index);
 	}
 	
-	public int getAge() {
-		return age;
+	public List<Object> getValues(){
+		return values;
 	}
-	
 	
 }
